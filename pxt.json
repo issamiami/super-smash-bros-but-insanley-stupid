@@ -8,7 +8,9 @@
         "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.1",
         "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
         "settings-blocks": "github:microsoft/pxt-settings-blocks#v1.0.0",
-        "sevenseg": "*"
+        "sevenseg": "*",
+        "animation": "*",
+        "darts": "*"
     },
     "files": [
         "main.blocks",
@@ -16,7 +18,9 @@
         "README.md",
         "assets.json",
         "tilemap.g.jres",
-        "tilemap.g.ts"
+        "tilemap.g.ts",
+        "images.g.jres",
+        "images.g.ts"
     ],
     "testFiles": [
         "test.ts"
