@@ -8,9 +8,9 @@
         "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.1",
         "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
         "settings-blocks": "github:microsoft/pxt-settings-blocks#v1.0.0",
-        "sevenseg": "*",
         "animation": "*",
-        "darts": "*"
+        "darts": "*",
+        "pxt-button-combos": "github:jwunderl/pxt-button-combos#v0.0.24"
     },
     "files": [
         "main.blocks",
@@ -29,7 +29,7 @@
         "branch": "v1.10.36",
         "tag": "v1.10.36",
         "commits": "https://github.com/microsoft/pxt-arcade/commits/3a5a7e13703edf0412c17bdb9b1469e282a5b31b",
-        "target": "1.10.36",
+        "target": "1.11.37",
         "pxt": "8.3.9",
         "targetId": "arcade"
     },

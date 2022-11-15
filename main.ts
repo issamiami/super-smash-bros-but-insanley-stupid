@@ -1,80 +1,88 @@
+namespace SpriteKind {
+    export const Player_2 = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Startgame == 1) {
         mySprite.vy += -150
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (Startgame == 1) {
-        animation.runImageAnimation(
-        mySprite,
-        [img`
-            ....................
-            ....................
-            ..f....fffffff......
-            .f3f..f3333333f.....
-            .f3f.f33333333f.....
-            .f3ff3333333333f....
-            .f3f333333333333f...
-            .f3333f133331f333f..
-            .f333333333333333f..
-            ..f33fff333ff3333ff.
-            ..f33f22fff22f3333f.
-            ..f333f22222f33333f.
-            ..f3333f111f333333f.
-            ..f33333fff3333333f.
-            ...f3333333333fff3f.
-            ....f332222233f.f3f.
-            .....ff2fff2ff..f3f.
-            .......2...2.....f..
-            .....222...222......
-            .....111...111......
-            `,img`
-            ....................
-            ....................
-            ..f....fffffff......
-            .f3f..f3333333f.....
-            .f3f.f33333333f.....
-            .f3ff3333333333f....
-            .f3f333333333333f...
-            .f3333f13333f1333f..
-            .f333333333333333f..
-            ..f33333333333333ff.
-            ..f333333333333333f.
-            ..f333fffffff33333f.
-            ..f333333333333333f.
-            ..f333333333333333f.
-            ...f3333333333fff3f.
-            ....f332222233f.f3f.
-            .....ff2fff2ff..f3f.
-            .......2...222...f..
-            .....222...111......
-            .....111............
-            `,img`
-            ....................
-            ....................
-            ..f....fffffff......
-            .f3f..f3333333f.....
-            .f3f.f33333333f.....
-            .f3ff3333333333f....
-            .f3f333333333333f...
-            .f33331f33331f333f..
-            .f333333333333333f..
-            ..f33fff333ff3333ff.
-            ..f33f22fff22f3333f.
-            ..f333f22222f33333f.
-            ..f3333f111f333333f.
-            ..f33333fff3333333f.
-            ...f3333333333fff3f.
-            ....f332222233f.f3f.
-            .....ff2fff2ff..f3f.
-            .....222...2.....f..
-            .....111...222......
-            ...........111......
-            `],
-        100,
-        true
-        )
+    if (Kirbyselected == 1) {
+        if (Startgame == 1) {
+            animation.runImageAnimation(
+            mySprite,
+            [img`
+                ....................
+                ....................
+                ..f....fffffff......
+                .f3f..f3333333f.....
+                .f3f.f33333333f.....
+                .f3ff3333333333f....
+                .f3f333333333333f...
+                .f3333f133331f333f..
+                .f333333333333333f..
+                ..f33fff333ff3333ff.
+                ..f33f22fff22f3333f.
+                ..f333f22222f33333f.
+                ..f3333f111f333333f.
+                ..f33333fff3333333f.
+                ...f3333333333fff3f.
+                ....f332222233f.f3f.
+                .....ff2fff2ff..f3f.
+                .......2...2.....f..
+                .....222...222......
+                .....111...111......
+                `,img`
+                ....................
+                ....................
+                ..f....fffffff......
+                .f3f..f3333333f.....
+                .f3f.f33333333f.....
+                .f3ff3333333333f....
+                .f3f333333333333f...
+                .f3333f13333f1333f..
+                .f333333333333333f..
+                ..f33333333333333ff.
+                ..f333333333333333f.
+                ..f333fffffff33333f.
+                ..f333333333333333f.
+                ..f333333333333333f.
+                ...f3333333333fff3f.
+                ....f332222233f.f3f.
+                .....ff2fff2ff..f3f.
+                .......2...222...f..
+                .....222...111......
+                .....111............
+                `,img`
+                ....................
+                ....................
+                ..f....fffffff......
+                .f3f..f3333333f.....
+                .f3f.f33333333f.....
+                .f3ff3333333333f....
+                .f3f333333333333f...
+                .f33331f33331f333f..
+                .f333333333333333f..
+                ..f33fff333ff3333ff.
+                ..f33f22fff22f3333f.
+                ..f333f22222f33333f.
+                ..f3333f111f333333f.
+                ..f33333fff3333333f.
+                ...f3333333333fff3f.
+                ....f332222233f.f3f.
+                .....ff2fff2ff..f3f.
+                .....222...2.....f..
+                .....111...222......
+                ...........111......
+                `],
+            100,
+            true
+            )
+        }
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
+    tiles.placeOnRandomTile(mySprite, assets.tile`transparency16`)
 })
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     if (Startgame == 1) {
@@ -82,76 +90,78 @@ controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pres
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (Startgame == 1) {
-        animation.runImageAnimation(
-        mySprite,
-        [img`
-            ....................
-            ....................
-            ......fffffff....f..
-            .....f3333333f..f3f.
-            .....f33333333f.f3f.
-            ....f3333333333ff3f.
-            ...f333333333333f3f.
-            ..f333f133331f3333f.
-            ..f333333333333333f.
-            .ff3333ff333fff33f..
-            .f3333f22fff22f33f..
-            .f33333f22222f333f..
-            .f333333f111f3333f..
-            .f3333333fff33333f..
-            .f3fff3333333333f...
-            .f3f.f332222233f....
-            .f3f..ff2fff2ff.....
-            ..f.....2...2.......
-            ......222...222.....
-            ......111...111.....
-            `,img`
-            ....................
-            ....................
-            ......fffffff....f..
-            .....f3333333f..f3f.
-            .....f33333333f.f3f.
-            ....f3333333333ff3f.
-            ...f333333333333f3f.
-            ..f3331f33331f3333f.
-            ..f333333333333333f.
-            .ff33333333333333f..
-            .f333333333333333f..
-            .f33333fffffff333f..
-            .f333333333333333f..
-            .f333333333333333f..
-            .f3fff3333333333f...
-            .f3f.f332222233f....
-            .f3f..ff2fff2ff.....
-            ..f...222...2.......
-            ......111...222.....
-            ............111.....
-            `,img`
-            ....................
-            ....................
-            ......fffffff....f..
-            .....f3333333f..f3f.
-            .....f33333333f.f3f.
-            ....f3333333333ff3f.
-            ...f333333333333f3f.
-            ..f333f13333f13333f.
-            ..f333333333333333f.
-            .ff3333ff333fff33f..
-            .f3333f22fff22f33f..
-            .f33333f22222f333f..
-            .f333333f111f3333f..
-            .f3333333fff33333f..
-            .f3fff3333333333f...
-            .f3f.f332222233f....
-            .f3f..ff2fff2ff.....
-            ..f.....2...222.....
-            ......222...111.....
-            ......111...........
-            `],
-        100,
-        true
-        )
+    if (Kirbyselected == 1) {
+        if (Startgame == 1) {
+            animation.runImageAnimation(
+            mySprite,
+            [img`
+                ....................
+                ....................
+                ......fffffff....f..
+                .....f3333333f..f3f.
+                .....f33333333f.f3f.
+                ....f3333333333ff3f.
+                ...f333333333333f3f.
+                ..f333f133331f3333f.
+                ..f333333333333333f.
+                .ff3333ff333fff33f..
+                .f3333f22fff22f33f..
+                .f33333f22222f333f..
+                .f333333f111f3333f..
+                .f3333333fff33333f..
+                .f3fff3333333333f...
+                .f3f.f332222233f....
+                .f3f..ff2fff2ff.....
+                ..f.....2...2.......
+                ......222...222.....
+                ......111...111.....
+                `,img`
+                ....................
+                ....................
+                ......fffffff....f..
+                .....f3333333f..f3f.
+                .....f33333333f.f3f.
+                ....f3333333333ff3f.
+                ...f333333333333f3f.
+                ..f3331f33331f3333f.
+                ..f333333333333333f.
+                .ff33333333333333f..
+                .f333333333333333f..
+                .f33333fffffff333f..
+                .f333333333333333f..
+                .f333333333333333f..
+                .f3fff3333333333f...
+                .f3f.f332222233f....
+                .f3f..ff2fff2ff.....
+                ..f...222...2.......
+                ......111...222.....
+                ............111.....
+                `,img`
+                ....................
+                ....................
+                ......fffffff....f..
+                .....f3333333f..f3f.
+                .....f33333333f.f3f.
+                ....f3333333333ff3f.
+                ...f333333333333f3f.
+                ..f333f13333f13333f.
+                ..f333333333333333f.
+                .ff3333ff333fff33f..
+                .f3333f22fff22f33f..
+                .f33333f22222f333f..
+                .f333333f111f3333f..
+                .f3333333fff33333f..
+                .f3fff3333333333f...
+                .f3f.f332222233f....
+                .f3f..ff2fff2ff.....
+                ..f.....2...222.....
+                ......222...111.....
+                ......111...........
+                `],
+            100,
+            true
+            )
+        }
     }
 })
 controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
@@ -227,6 +237,17 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
         )
     }
 })
+controller.down.onEvent(ControllerButtonEvent.Repeated, function () {
+    if (Kirbyselected == 1) {
+        if (controller.A.isPressed()) {
+            scaling.scaleByPixels(mySprite, 50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
+            pause(100)
+            scaling.scaleByPixels(mySprite, -50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
+        }
+    } else {
+    	
+    }
+})
 controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
     if (Startgame == 1) {
         animation.runImageAnimation(
@@ -298,6 +319,13 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
         100,
         true
         )
+    }
+})
+controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Repeated, function () {
+    if (controller.player2.isPressed(ControllerButton.A)) {
+        scaling.scaleByPixels(mySprite2, 50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
+        pause(100)
+        scaling.scaleByPixels(mySprite2, -50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
     }
 })
 let Startgame = 0
@@ -517,7 +545,7 @@ if (story.checkLastAnswer("2Super chris pratt")) {
         ...88.....88....
         ..fff.....fff...
         ..ffff....ffff..
-        `, SpriteKind.Player)
+        `, SpriteKind.Player_2)
     controller.player2.moveSprite(mySprite2, 100, 0)
     mySprite2.ay = 500
 } else if (story.checkLastAnswer("2#Kirby")) {
@@ -542,7 +570,7 @@ if (story.checkLastAnswer("2Super chris pratt")) {
         .......2...2.....f..
         .....222...222......
         .....111...111......
-        `, SpriteKind.Player)
+        `, SpriteKind.Player_2)
     controller.player2.moveSprite(mySprite2, 100, 0)
     mySprite2.ay = 500
 }
