@@ -1,9 +1,70 @@
 namespace SpriteKind {
     export const Player_2 = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Player_2, function (sprite, otherSprite) {
+    if (Downattackkirby == 1) {
+        info.player2.changeLifeBy(-1)
+    }
+    if (controller.A.isPressed()) {
+        info.player2.changeLifeBy(-1)
+        mySprite2.vy += -220
+    }
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Startgame == 1) {
         mySprite.vy += -150
+    }
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Startgame == 1) {
+        if (Kirbyselected == 1) {
+            mySprite.vy += -220
+            pause(100)
+            projectile = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . f f f . f f f . . . . 
+                . . . . f 3 3 3 f 3 3 3 f . . . 
+                . . . . f 3 3 3 3 3 1 3 f . . . 
+                . . . . f 3 3 3 3 3 3 3 f . . . 
+                . . . . . f 3 b b b 3 f . . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, mySprite, 0, 200)
+        }
+    }
+})
+controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
+    if (Startgame == 1) {
+        if (Kirbyselected == 1) {
+            mySprite2.vy += -220
+            pause(100)
+            pro2 = sprites.createProjectileFromSprite(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . f f f . f f f . . . . 
+                . . . . f 3 3 3 f 3 3 3 f . . . 
+                . . . . f 3 3 3 3 3 1 3 f . . . 
+                . . . . f 3 3 3 3 3 3 3 f . . . 
+                . . . . . f 3 b b b 3 f . . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, mySprite2, 0, 200)
+        }
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -87,6 +148,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     if (Startgame == 1) {
         mySprite2.vy += -150
+    }
+})
+sprites.onOverlap(SpriteKind.Player_2, SpriteKind.Player, function (sprite, otherSprite) {
+    if (Downatackkirby2 == 1) {
+        info.changeLifeBy(-3)
+    }
+    if (controller.player2.isPressed(ControllerButton.A)) {
+        mySprite.vy += -220
+        info.changeLifeBy(-1)
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -237,16 +307,24 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
         )
     }
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player_2, function (sprite, otherSprite) {
+    info.player2.changeLifeBy(-10)
+    projectile.destroy(effects.hearts, 500)
+})
 controller.down.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Kirbyselected == 1) {
         if (controller.A.isPressed()) {
             scaling.scaleByPixels(mySprite, 50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
+            Downattackkirby = 1
             pause(100)
+            Downattackkirby = 0
             scaling.scaleByPixels(mySprite, -50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
         }
-    } else {
-    	
     }
+})
+info.onLifeZero(function () {
+    game.splash("PLAYER 2 WINS")
+    game.over(true, effects.confetti)
 })
 controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
     if (Startgame == 1) {
@@ -321,13 +399,25 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
         )
     }
 })
+info.player2.onLifeZero(function () {
+    game.splash("PLAYER 1 WINS")
+    game.over(true, effects.confetti)
+})
 controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Repeated, function () {
-    if (controller.player2.isPressed(ControllerButton.A)) {
-        scaling.scaleByPixels(mySprite2, 50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
-        pause(100)
-        scaling.scaleByPixels(mySprite2, -50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
+    if (Kirbyselected == 1) {
+        if (controller.player2.isPressed(ControllerButton.A)) {
+            scaling.scaleByPixels(mySprite2, 50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
+            Downatackkirby2 = 1
+            pause(100)
+            Downatackkirby2 = 0
+            scaling.scaleByPixels(mySprite2, -50, ScaleDirection.Horizontally, ScaleAnchor.Middle)
+        }
     }
 })
+let Downatackkirby2 = 0
+let pro2: Sprite = null
+let projectile: Sprite = null
+let Downattackkirby = 0
 let Startgame = 0
 let mySprite2: Sprite = null
 let Supercpselected = 0
